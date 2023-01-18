@@ -3,7 +3,7 @@
 // 78 -> 8
 // 12-> 2
 // 85 -> 8
-int a=new Random().Next(10,99);
+int a=new Random().Next(10,100);
 Console.WriteLine($"Random number - {a}");
 int b=a%10;
 int c=a/10;
