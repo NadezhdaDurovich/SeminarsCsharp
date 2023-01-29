@@ -14,6 +14,6 @@ else
 // int a=N/100*100;
 // int b=N%10;
 // int c=(N-a-b)/10;
-Console.WriteLine($"Вторая цифра числа {N} - это {Math.Abs((N-(N/100*100)-(N%10))/10)}.");
-// Console.WriteLine($"Вторая цифра числа {N} - это {Math.Abs(c)}.");
+// Console.WriteLine($"Вторая цифра числа {N} - это {Math.Abs((N-(N/100*100)-(N%10))/10)}.");
+Console.WriteLine($"Вторая цифра числа {N} - это {(N/10)%10}.");
 }
