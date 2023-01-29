@@ -79,6 +79,22 @@
 // Console.WriteLine($"Результат возведения числа {A} в {B}-ую степень: {c}");
 
 // 2-й вариант решения
+int ToThePower (int A, int B)
+{
+    int res=A;
+    for (int i=1;i<B;i++)
+    {
+        res*=A;
+    }
+    return res;
+}
+Console.Write("Введите число: ");
+int A=Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение степени для возведения: ");
+int B=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Результат возведения числа {A} в {B}-ую степень: {ToThePower (A,B)}");
+
+// 3-й вариант решения
 // double Exponent (int A, int B)
 // {
 // double result=0;
