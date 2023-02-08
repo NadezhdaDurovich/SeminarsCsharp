@@ -24,14 +24,27 @@
 // Значения b1, k1, b2, k2 задаются пользователем. 
 // Например, b1=2, k1=5, b2=4, k2=9 -> 2 (-0,5; -0,5).
 
-// Console.Write("Введите координату 1 первой прямой: ");
-// double b1=Convert.ToInt32(Console.ReadLine());
-// Console.Write("Введите координату 2 первой прямой: ");
-// double k1=Convert.ToInt32(Console.ReadLine());
-// Console.Write("Введите координату 1 второй прямой: ");
-// double b2=Convert.ToInt32(Console.ReadLine());
-// Console.Write("Введите координату 2 второй прямой: ");
-// double k2=Convert.ToInt32(Console.ReadLine());
+void FindIntersectionCoordinates(double a1,double b1,double a2,double b2)
+{
+   if (a1==a2 && b1==b2) Console.WriteLine ("Линии совпадают.");
+   else if (b1==b2) Console.WriteLine ("Линии не пересекаются"); 
+   else
+   {
+    double x=(a2-a1)/(b1-b2);
+    double y=(b1*x)+a1;
+    Console.WriteLine($"Найдена точка пересечения двух прямых:  ({x};{y})");
+   }
+}
+Console.Write("Введите координату 1 первой прямой: ");
+double b1=Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите координату 2 первой прямой: ");
+double k1=Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите координату 1 второй прямой: ");
+double b2=Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите координату 2 второй прямой: ");
+double k2=Convert.ToInt32(Console.ReadLine());
+FindIntersectionCoordinates(b1,k1,b2,k2);
+
 // if (b1==b2) Console.WriteLine ("Линии не пересекаются");
 // double x=(b2-b1)/(k1-k2);
 // double y=(k1*x)+b1;
@@ -62,6 +75,7 @@
 //         }
 //     }
 // }
+
 
 
 
