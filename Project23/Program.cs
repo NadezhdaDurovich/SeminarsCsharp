@@ -69,13 +69,14 @@
 
 // Задача 42: Напишите программу, которая будет преобразовывать
 // десятичное число в двоичное. 45 -> 101101 3  -> 11 2  -> 10
+
 // Console.Write("Введите любое число в десятичной системе счисления: ");
 // int N=Convert.ToInt32(Console.ReadLine());
-// string result=" ";
+// string result=" ";// лучше использовать String.Empty;
 // while (N>0)
 // {
-//     result=Convert.ToString(N%2)+result;
-//     int x=N%2;
+//     result=Convert.ToString(N%2)+result;//преобразовываем тип значения из числового в строковый  
+//     // int x=N%2;
 //     N/=2;
 // }
 //    Console.WriteLine(result);
@@ -87,19 +88,16 @@
 // Console.Write("Введите любое число: ");
 // int N=Convert.ToInt32(Console.ReadLine());
 // double [] array=new double[N];
-// string fibonacci="0,1,";
+// string fibonacci="0 1 ";
 // int i=0;
-// array[i]=0;
-// array[i+1]=1;
-// for (i=0;i<=N-1;i++)
+// array[0]=0;
+// array[1]=1;
+// for (i=2;i<=N-1;i++)
 // {
-//     array[i+2]=array[i]+array[i+1];
-//     fibonacci=fibonacci+Convert.ToString(array[i+2]);
+//     array[i]=array[i-2]+array[i-1];
+//     fibonacci=fibonacci+Convert.ToString(array[i]+" ");
 // }
 // Console.WriteLine($"Число Фибоначчи от 0 до {N} -> {fibonacci}");
-
-// Задача 45: Напишите программу, которая будет создавать
-// копию заданного массива с помощью поэлементного копирования
 
 // Задача 46: Задайте двумерный массив размером m×n, заполненный 
 // случайными целыми числами. m = 3, n = 4. 1 4 8 19 5 -2 33 -2 77 3 8 1
@@ -199,8 +197,7 @@
 //     Console.WriteLine();
 // }
 // Console.WriteLine();
-// Console.Write("Найдем сумму элементов главной диагонали:");
-// Console.WriteLine();
+// Console.Write("Найдем сумму элементов главной диагонали: ");
 // int sum=0;
 // for (int i = 0; i < array.GetLength(0); i++)
 // {
@@ -212,7 +209,88 @@
 //         }
 //     }
 // }
-// Console.WriteLine($"Сумма элементов главной диагонали = {sum}");
+// Console.WriteLine(sum);
+
+// Задача 53: Задайте двумерный массив. Напишите программу, 
+// которая поменяет местами первую и последнюю строку массива.
+
+int[,] GetPrintArray(int n, int m)
+{
+    int[,] array = new int[n, m];
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = new Random().Next(1, 6);
+            Console.Write($" {array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+    return array;
+}
+// int lines = new Random().Next(2, 5);
+// int columns = new Random().Next(2, 5);
+// Console.WriteLine($"Создадим двухмерный массив [{lines},{columns}]");
+// // GetPrintArray(lines, columns);
+// int[,] array = GetPrintArray(lines, columns);
+// Console.WriteLine();
+// int[] firstLine=new int[columns];
+// int[] lastLine=new int[columns];
+// for (int i = 0; i < array.GetLength(0); i++)
+// {
+//     for (int j = 0; j < array.GetLength(1); j++)
+//     {
+//         if (i == 0)//(array.GetLength(0)-1))
+//         {
+//             int temp = array [i, j];
+//             array[i, j] = array[lines-1, j];
+//             // array[lines-1,j] = temp;
+//             firstLine[j]=array[lines-1, j];
+//             lastLine[j]=temp;
+//             Console.Write($" {firstLine[j]} ");
+//         }
+//         else if (i==lines-1)Console.Write($" {lastLine[j]} ");
+//         else Console.Write($" {array[i,j]} ");
+//     }
+//     Console.WriteLine();
+// }
 
 
 
+// Задача 55: Задайте двумерный массив.
+// Напишите программу, которая заменяет строки на столбцы.
+// В случае, если это невозможно, программа должна вывести сообщение для пользователя.
+
+int lines = 3;//new Random().Next(2, 5);
+int columns = 3;//new Random().Next(2, 5);
+Console.WriteLine($"Создадим двухмерный массив [{lines},{columns}]");
+int[,] array = GetPrintArray(lines, columns);
+Console.WriteLine();
+int[,] newArray = new int [array.GetLength(1), array.GetLength(0)];
+if (array.GetLength(0)==array.GetLength(1))
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j =0; j < array.GetLength(1); j++)
+        {
+            if (i==j) 
+            {
+                newArray[i,j]=array[i,j];
+                Console.Write($" {array[i,j]} ");
+            }
+            if (array[i,j]!=array[j,i])
+            {
+                int temp = array [i, j];
+                array[i, j] = array[j,i];
+                array[j,i] = temp;
+                newArray[i,j]=array[j,i];
+                Console.Write($" {newArray[i,j]} ");
+            }
+        }
+        Console.WriteLine();
+    }
+}
+else
+{
+    Console.WriteLine("Поменять строки и столбцы невозможно");
+}
