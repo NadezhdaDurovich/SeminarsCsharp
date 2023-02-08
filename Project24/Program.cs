@@ -5,20 +5,29 @@
 //трёхзначными числами. Напишите программу, которая покажет
 // количество четных чисел в массиве.Например,[345,897,568,234]->2.
 
-// Console.Write("Введите желаемое количество элементов массива: ");
-// int numb = Convert.ToInt32(Console.ReadLine());
-// Console.Write("Выведем массив случайных чисел: ");
-// Console.Write("[ ");
-// int[] array = new int[numb];
-// int count = 0;
-// for (int i = 0; i < numb; i++)
+// int[] GetArray(int numb)
 // {
-//     array[i] = new Random().Next(100, 1000);
-//     Console.Write($"{Math.Abs(array[i])} ");
-//     if (array[i] % 2 == 0) count++;
+//     int[] numbers=new int[numb];
+//     for (int i=0;i<numbers.Length;i++)
+//     {
+//         numbers[i]=new Random().Next(100, 1000);
+//         Console.Write($"{Math.Abs(numbers[i])} ");
+//     }
+//     return numbers;
 // }
-// Console.WriteLine("]");
-// Console.WriteLine($"Среди элементов данного массива - {count} четных числа");
+// int CountEvenArray (int [] nums)
+// {
+//     int count=0;
+//     for (int i = 0; i < nums.Length; i++)
+//     {
+//         if (nums[i] % 2 == 0) count ++;
+//     }
+//     return count;
+// }
+// Console.WriteLine("Выведем массив случайных положительных трехзначных чисел.");
+// Console.Write("Задайте желаемую длину массива: ");
+// int number = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine($"Среди элементов данного массива - {CountEvenArray(GetArray(number))} четных числа");
 
 // Задача №36.
 // Задайте одномерный массив, заполненный случайными числами.
@@ -52,28 +61,28 @@
 // Задайте массив вещественных чисел.  Найдите разницу
 // между макс. и мин.элементами массива. Например, [3 7 22 2 78] -> 76.
 
-// void PrintArray(int numb, int [] array)
-// {
-//     Console.Write("Представлен массив случайных чисел: ");
-//     Console.Write("[ ");
-//     for (int i=0; i<numb;i++)
-//     {
-//         array[i]=new Random().Next(0,101);
-//         Console.Write($"{array[i]} ");
-//     }
-//     Console.WriteLine("]");
-// }
-// Console.Write("Введите желаемое количество элементов массива: ");
-// int numb=Convert.ToInt32(Console.ReadLine());
-// int [] array=new int [numb];
-// PrintArray(numb,array);
-// int maxInteger=array[0];
-// int minInteger=array[0];
-// int i=0;
-// while (i<numb)
-// {
-//     if (array[i]>maxInteger) maxInteger = array[i];
-//     if (array[i]<minInteger) minInteger = array[i];
-//     i++;
-// }
-// Console.WriteLine($"Разность между макс. и мин. элементами данного массива = {maxInteger-minInteger}.");
+void PrintArray(int numb, double [] array)
+{
+    Console.Write("Представлен массив случайных чисел: ");
+    Console.Write("[ ");
+    for (int i=0; i<numb;i++)
+    {
+        array[i]=Math.Round(new Random().NextDouble()*numb,2);
+        Console.Write($"{array[i]} ");
+    }
+    Console.WriteLine("]");
+}
+Console.Write("Введите желаемое количество элементов массива: ");
+int numb=Convert.ToInt32(Console.ReadLine());
+double [] array=new double [numb];
+PrintArray(numb,array);
+double maxInteger=array[0];
+double minInteger=array[0];
+int i=0;
+while (i<numb)
+{
+    if (array[i]>maxInteger) maxInteger = array[i];
+    if (array[i]<minInteger) minInteger = array[i];
+    i++;
+}
+Console.WriteLine($"Разность между макс. и мин. элементами данного массива = {maxInteger-minInteger}.");
